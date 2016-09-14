@@ -22,6 +22,8 @@ namespace LinqExample
             {
                 Console.WriteLine(book.Title + " : " + book.Price);
             }
+            Console.WriteLine("--------------------------------");
+
             //LinqExample Extension Methods
             var bookTitleList = bookList
                 .Where(b => b.Price < 100)
@@ -32,7 +34,30 @@ namespace LinqExample
             {
                 Console.WriteLine(bookTitle);
             }
-     
+            Console.WriteLine("--------------------------------");
+
+            var myBook = bookList.Single(b => b.Title == "B");
+            Console.WriteLine(myBook.Title);
+            Console.WriteLine("--------------------------------");
+
+            myBook = bookList.FirstOrDefault(b => b.Title == "A");
+            Console.WriteLine(myBook.Title + ": " + myBook.Price);
+            Console.WriteLine("--------------------------------");
+
+            myBook = bookList.LastOrDefault(b => b.Title == "A");
+            Console.WriteLine(myBook.Title + ": " + myBook.Price);
+            Console.WriteLine("--------------------------------");
+
+            //skip the first two object and take the next three after the two
+            var bookList2 = bookList.Skip(2).Take(3);
+            foreach (Book book in bookList2)
+            {
+                Console.WriteLine(book.Title);
+            }
+
+            //aggregate function
+            //Count 
+            //Sum Max Min
         }
 
         static IEnumerable<Book> GetBookList()
@@ -41,7 +66,7 @@ namespace LinqExample
             {
                 new Book() {Title = "gege", Price = 50},
                 new Book() {Title = "A", Price = 90},
-                new Book() {Title = "sasa", Price = 100},
+                new Book() {Title = "A", Price = 100},
                 new Book() {Title = "mama", Price = 500},
                 new Book() {Title = "Ahmad", Price = 200},
                 new Book() {Title = "B", Price = 30},
