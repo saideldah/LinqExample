@@ -58,6 +58,13 @@ namespace LinqExample
             //aggregate function
             //Count 
             //Sum Max Min
+            Console.WriteLine("--------------------------------");
+
+            var myList = bookList.Select(b => b.Title + " " +b.Price);
+            foreach (var var in myList)
+            {
+                Console.WriteLine(var);
+            }
         }
 
         static IEnumerable<Book> GetBookList()
